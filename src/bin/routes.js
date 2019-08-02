@@ -35,10 +35,18 @@ app.get('/usuarios/:id', (req, res) => {
 
 // Actualizar un usuario
 
-app.put('/usuarios/:id', (req, res) => {
+/* app.put('/usuarios/:id', (req, res) => {
     let newDatas = req.body;
     newDatas.id = req.params.id;
     database.updateUser(newDatas, res);
+}) */
+
+// Actualizar un usuario con niveles del curso y coins
+
+app.put('/usuarios/:id_usuario', (req, res) => {
+    let {id_usuario} = req.params;
+    let {id_nivelescurso, id_coins} = req.body;
+    database.updateUserLevelCoins(id_usuario,id_nivelescurso, id_coins,res);
 })
 
 // Borrar un usuario
@@ -73,12 +81,12 @@ app.get('/nivelescurso/:id', (req, res) => {
     database.getLevelId(id, res);
 })
 
-// Actualizar un nivel del curso
+// Actualizar niveles del curso con usuarios
 
-app.put('/nivelescurso/:id', (req, res) => {
-    let newD = req.body;
-    newD.id = req.params.id;
-    database.updateLevel(newD, res);
+app.put('/nivelescurso/:id_nivelcurso', (req, res) => {
+    let {id_nivelcurso} = req.params;
+    let {id_usuarios} = req.body;
+    database.updateLevelUser(id_nivelcurso,id_usuarios,res);
 })
 
 // Borrar un nivel del curso
@@ -115,10 +123,18 @@ app.get('/coins/:id', (req, res) => {
 
 // Actualizar cantidad de coins
 
-app.put('/coins/:id', (req, res) => {
+/* app.put('/coins/:id', (req, res) => {
     let newCant = req.body;
     newCant.id = req.params.id;
     database.updateCoin(newCant, res);
+}) */
+
+// Actualizar coins con usuarios
+
+app.put('/coins/:id_coin', (req, res) => {
+    let {id_coin} = req.params;
+    let {id_usuarios} = req.body;
+    database.updateCoinUser(id_coin,id_usuarios,res);
 })
 
 // Borrar la cantidad de coins por ID

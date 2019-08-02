@@ -61,7 +61,7 @@ getUserId(res,id) {
 
 // Actualizar un usuario
 
-updateUser(newDatas, res) {
+/* updateUser(newDatas, res) {
     let { usuario, password } = newDatas;
 
     Usuarios.updateOne(
@@ -76,6 +76,18 @@ updateUser(newDatas, res) {
     .catch(err => {
         if (err) throw err;
     });
+} */
+
+// Actualizar usuarios con niveles del curso y coins
+
+updateUserLevelCoins(id_usuario,id_nivelescurso,id_coins,res) {
+    Usuarios.updateOne({_id: id_usuario}, { $push: {id_nivelescurso: id_nivelescurso, id_coins: id_coins} })
+    .then(rawResponse => {
+        res.send({message: "User updated", raw: rawResponse})
+    })
+    .catch(err => {
+        if (err) throw err;
+    })
 }
 
 // Eliminar un usuario
@@ -119,23 +131,16 @@ getLevelId(id, res) {
     })
 }
 
-// Actualizar un nivel del curso
+// Actualizar niveles del curso con usuarios
 
-updateLevel(newD, res) {
-    let {id, descripcion} = newD;
-
-    Nivelescursos.updateOne(
-        {_id: id},
-        { $set: {descripcion: descripcion} }
-    )
-
-    .then(rawResponse => {
-        res.send({message: "Level updated successfully", raw: rawResponse})
-    })
-
-    .catch(err => {
-        if (err) throw err;
-    });
+updateLevelUser(id_nivelcurso, id_usuarios, res) {
+    Nivelescursos.updateOne({_id: id_nivelcurso}, { $push: {id_usuarios: id_usuarios} })
+        .then(rawResponse => {
+            res.send({message: "Level updated", raw: rawResponse})
+        })
+        .catch(err => {
+            if (err) throw err;
+        })
 }
 
 // Borrar un nivel del curso
@@ -181,7 +186,7 @@ getCoinId(id, res) {
 
 // Actualizar cantidad de coins
 
-updateCoin(newCant, res) {
+/* updateCoin(newCant, res) {
     let {id, cantidad} = newCant;
 
     Coins.updateOne(
@@ -196,6 +201,18 @@ updateCoin(newCant, res) {
     .catch(err => {
         if (err) throw err;
     });
+} */
+
+// Actualizar coins con usuarios
+
+updateCoinUser(id_coin, id_usuarios, res) {
+    Coins.updateOne({_id: id_coin}, { $push: {id_usuarios: id_usuarios} })
+        .then(rawResponse => {
+            res.send({message: "Coins updated", raw: rawResponse})
+        })
+        .catch(err => {
+            if (err) throw err;
+        })
 }
 
 // Borrar la cantidad de coins por ID
