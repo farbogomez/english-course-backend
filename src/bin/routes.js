@@ -33,13 +33,12 @@ app.get('/usuarios/:id', (req, res) => {
     database.getUserId(res,id);
 })
 
-// Actualizar un usuario
+// Buscar un nivel del curso y coins de un usuario
 
-/* app.put('/usuarios/:id', (req, res) => {
-    let newDatas = req.body;
-    newDatas.id = req.params.id;
-    database.updateUser(newDatas, res);
-}) */
+app.get("/coins/:id_coin/nivelescurso/:id_nivelcurso/usuarios/:id_usuario", (req, res) => {
+    let { id_coin, id_nivelcurso, id_usuario } = req.params;
+    database.getUserLevel(id_coin, id_nivelcurso, id_usuario, res);
+});
 
 // Actualizar un usuario con niveles del curso y coins
 
@@ -80,6 +79,13 @@ app.get('/nivelescurso/:id', (req, res) => {
     let { id } = req.params;
     database.getLevelId(id, res);
 })
+
+// Buscar los niveles del curso de un usuario
+
+app.get("/usuarios/:id_usuario/nivelescurso", (req, res) => {
+    let { id_usuario } = req.params;
+    database.getLevelsUser(id_usuario, res);
+});
 
 // Actualizar niveles del curso con usuarios
 
@@ -123,11 +129,11 @@ app.get('/coins/:id', (req, res) => {
 
 // Actualizar cantidad de coins
 
-/* app.put('/coins/:id', (req, res) => {
+app.put('/coins/:id', (req, res) => {
     let newCant = req.body;
     newCant.id = req.params.id;
     database.updateCoin(newCant, res);
-}) */
+})
 
 // Actualizar coins con usuarios
 
@@ -149,12 +155,13 @@ app.delete('/coins/:id', (req, res) => {
 
 // RUTAS DE LOS TEMAS
 
-// Guardar tema
+// Agregar un tema de un nivel del curso
 
-app.post('/temas', (req, res) => {
+app.post("/nivelescurso/:id_nivelcurso/temas", (req, res) => {
+    let { id_nivelcurso } = req.params;
     let topic = req.body;
-    database.setTopic(topic, res);
-})
+    database.setTopicLevel(id_nivelcurso, topic, res);
+});
 
 // Buscar todos los temas
 
@@ -189,12 +196,13 @@ app.delete('/temas/:id', (req, res) => {
 
 // RUTAS DE LOS SUBTEMAS
 
-// Guardar subtema
+// Agregar subtemas de un tema
 
-app.post('/subtemas', (req, res) => {
+app.post("/temas/:id_tema/subtemas", (req, res) => {
+    let { id_tema} = req.params;
     let subtopic = req.body;
-    database.setSubtopic(subtopic, res);
-})
+    database.setSubtopicTopic(id_tema, subtopic, res);
+});
 
 // Buscar todos los subtemas
 
@@ -229,12 +237,13 @@ app.delete('/subtemas/:id', (req, res) => {
 
 // RUTAS DE LOS ACTIVIDADES
 
-// Guardar actividad
+// Agregar actividades de un subtema
 
-app.post('/actividades', (req, res) => {
-    let act = req.body;
-    database.setAct(act, res);
-})
+app.post("/subtemas/:id_subtema/actividades", (req, res) => {
+    let { id_subtema} = req.params;
+    let activity = req.body;
+    database.setActSubtopic(id_subtema, activity, res);
+});
 
 // Buscar todas las actividades
 

@@ -59,24 +59,23 @@ getUserId(res,id) {
     })
 }
 
-// Actualizar un usuario
+// Buscar un nivel del curso y coins de un usuario
 
-/* updateUser(newDatas, res) {
-    let { usuario, password } = newDatas;
-
-    Usuarios.updateOne(
-        { _id: id },
-        { $set: {usuario: usuario, password: password} }
-    )
-
-    .then(rawResponse => {
-        res.send({message: "Update success", raw: rawResponse})
-    })
-
-    .catch(err => {
-        if (err) throw err;
-    });
-} */
+getUserLevel(id_coin, id_nivelcurso, id_usuario, res) {
+    Usuarios.find({ _id: id_usuario, id_coins: id_coin, id_nivelescurso: id_nivelcurso })
+        .populate({
+            path: "id_coins",
+            select: "cantidad",
+        })
+        .populate({
+            path: "id_nivelescurso",
+            select: "descripcion porcentaje"
+        })
+        .exec(function(err, dUser) {
+            if (err) throw err;
+            res.send({ status: 200, datasUser: dUser });
+        });
+    }
 
 // Actualizar usuarios con niveles del curso y coins
 
@@ -129,6 +128,15 @@ getLevelId(id, res) {
         if (err) throw err;
         res.send(level);
     })
+}
+
+// Buscar los niveles del curso de un usuario
+
+getLevelsUser(id_usuario, res) {
+    Nivelescursos.find({ id_usuarios: id_usuario }, (err, levelsUser) => {
+        if (err) throw err;
+        res.send({ status: 200, levelsUser: levelsUser });
+    });
 }
 
 // Actualizar niveles del curso con usuarios
@@ -186,7 +194,7 @@ getCoinId(id, res) {
 
 // Actualizar cantidad de coins
 
-/* updateCoin(newCant, res) {
+updateCoin(newCant, res) {
     let {id, cantidad} = newCant;
 
     Coins.updateOne(
@@ -201,7 +209,7 @@ getCoinId(id, res) {
     .catch(err => {
         if (err) throw err;
     });
-} */
+}
 
 // Actualizar coins con usuarios
 
@@ -229,13 +237,14 @@ deleteCoin(id, res) {
 
 // CRUD DE LA COLECCIÓN TEMAS
 
-// Guardar un tema
+// Guardar un tema de un nivel del curso
 
-setTopic(topic,res) {
+setTopicLevel(id_nivelcurso, topic, res) {
+    topic.id_nivelcurso = id_nivelcurso;
     Temas.create(topic, (err, nTopic) => {
         if (err) throw err;
-        res.send({status: 200, newTopic: topic});
-    })
+        res.send({ status: 200, newTopic: nTopic });
+    });
 }
 
 // Buscar todos los temas
@@ -289,13 +298,14 @@ deleteTopic(id, res) {
 
 // CRUD DE LA COLECCIÓN SUBTEMAS
 
-// Guardar un subtema
+// Guardar subtemas de un tema
 
-setSubtopic(subtopic,res) {
+setSubtopicTopic(id_tema, subtopic, res) {
+    subtopic.id_tema = id_tema;
     Subtemas.create(subtopic, (err, nSubtopic) => {
         if (err) throw err;
-        res.send({status: 200, newSubtopic: nSubtopic});
-    })
+        res.send({ status: 200, newSubtopic: nSubtopic });
+    });
 }
 
 // Buscar todos los subtemas
@@ -349,13 +359,14 @@ deleteSubtopic(id, res) {
 
 // CRUD DE LA COLECCIÓN ACTIVIDADES
 
-// Guardar una actividad
+// Guardar actividades de un subtema
 
-setAct(subtopic,res) {
-    Actividades.create(subtopic, (err, nAct) => {
+setActSubtopic(id_subtema, activity, res) {
+    activity.id_subtema = id_subtema;
+    Actividades.create(activity, (err, nActivity) => {
         if (err) throw err;
-        res.send({status: 200, newActivity: nAct});
-    })
+        res.send({ status: 200, newActivity: nActivity });
+    });
 }
 
 // Buscar todas las actividades
