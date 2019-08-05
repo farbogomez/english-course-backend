@@ -61,7 +61,7 @@ getUserId(res,id) {
 
 // Buscar un nivel del curso y coins de un usuario
 
-getUserLevel(id_coin, id_nivelcurso, id_usuario, res) {
+getUserLevelCoins(id_coin, id_nivelcurso, id_usuario, res) {
     Usuarios.find({ _id: id_usuario, id_coins: id_coin, id_nivelescurso: id_nivelcurso })
         .populate({
             path: "id_coins",
@@ -69,7 +69,7 @@ getUserLevel(id_coin, id_nivelcurso, id_usuario, res) {
         })
         .populate({
             path: "id_nivelescurso",
-            select: "descripcion porcentaje"
+            select: "descripcion porcentaje",
         })
         .exec(function(err, dUser) {
             if (err) throw err;
@@ -386,6 +386,36 @@ getActId(id, res) {
         res.send(act);
     })
 }
+
+// Buscar una actividad de un subtema
+
+getActSubtopic(id_subtema, id_actividad, res) {
+    Actividades.find({ _id: id_actividad, id_subtema: id_subtema })
+        .populate({
+            path: "id_subtema",
+            select: "titulo descripcion",
+            populate: {
+                path: "id_tema",
+                select: "titulo descripcion",
+                populate: {
+                   path: "id_nivelcurso",
+                    select: "descripcion porcentaje",
+                    populate: {
+                        path: "id_usuarios",
+                        select: "nombre_1 nombre_2 apellido_1 apellido_2 usuario correo",
+                        populate: {
+                            path: "id_coins",
+                            select: "cantidad"
+                        }
+                    }
+                }
+            }
+        })
+        .exec(function(err, dAct) {
+            if (err) throw err;
+            res.send({ status: 200, datasActivity: dAct });
+        });
+    }
 
 // Actualizar una actividad
 

@@ -37,7 +37,7 @@ app.get('/usuarios/:id', (req, res) => {
 
 app.get("/coins/:id_coin/nivelescurso/:id_nivelcurso/usuarios/:id_usuario", (req, res) => {
     let { id_coin, id_nivelcurso, id_usuario } = req.params;
-    database.getUserLevel(id_coin, id_nivelcurso, id_usuario, res);
+    database.getUserLevelCoins(id_coin, id_nivelcurso, id_usuario, res);
 });
 
 // Actualizar un usuario con niveles del curso y coins
@@ -257,6 +257,13 @@ app.get('/actividades/:id', (req, res) => {
     let { id } = req.params;
     database.getActId(id, res);
 })
+
+// Buscar una actividad de un subtema
+
+app.get("/subtemas/:id_subtema/actividades/:id_actividad", (req, res) => {
+    let { id_subtema, id_actividad } = req.params;
+    database.getActSubtopic(id_subtema, id_actividad, res);
+});
 
 // Actualizar una actividad
 
