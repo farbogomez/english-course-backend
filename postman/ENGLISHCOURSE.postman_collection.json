@@ -1,0 +1,900 @@
+{
+	"info": {
+		"_postman_id": "9f7d7958-0d24-4495-ab27-dd79c5049f17",
+		"name": "ENGLISHCOURSE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre_1\": \"Andrés\",\n\t\"nombre_2\": \"Farid\",\n\t\"apellido_1\": \"Díaz\",\n\t\"apellido_2\": \"Gómez\",\n\t\"usuario\": \"Andi\",\n\t\"password\": \"afdg2345\",\n\t\"correo\": \"andi@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/usuarios",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/usuarios",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find user by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/usuarios/5d3eff588143ca058779bcc4",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"usuarios",
+						"5d3eff588143ca058779bcc4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find  level and coins of one user (populate)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/coins/5d44aa88e522710640f7494d/nivelescurso/5d44ab5ee522710640f7494f/usuarios/5d44ab2fe522710640f7494e",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"coins",
+						"5d44aa88e522710640f7494d",
+						"nivelescurso",
+						"5d44ab5ee522710640f7494f",
+						"usuarios",
+						"5d44ab2fe522710640f7494e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user with level and coin",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_nivelescurso\": [\"5d4888cd3a18d80adff9325c\"],\n\t\"id_coins\": [\"5d44aa88e522710640f7494d\"]\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/usuarios/5d3eff588143ca058779bcc4",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"usuarios",
+						"5d3eff588143ca058779bcc4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/usuarios/5d3eff588143ca058779bcc4",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"usuarios",
+						"5d3eff588143ca058779bcc4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save level",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"descripcion\": \"In this level you will learn the verb to be\",\n\t\"porcentaje\": 0 \n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/nivelescurso",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"nivelescurso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find levels",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/nivelescurso",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"nivelescurso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find level by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/nivelescurso/5d44ab5ee522710640f7494f",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"nivelescurso",
+						"5d44ab5ee522710640f7494f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find levels of one user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/usuarios/5d44ab2fe522710640f7494e/nivelescurso",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"usuarios",
+						"5d44ab2fe522710640f7494e",
+						"nivelescurso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update level with user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuarios\": [\"5d3b7e78ee4ddb10b68031bf\"]\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/nivelescurso/5d44a63ee522710640f7494c",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"nivelescurso",
+						"5d44a63ee522710640f7494c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete level",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/nivelescurso/5d44ab5ee522710640f7494f",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"nivelescurso",
+						"5d44ab5ee522710640f7494f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save coin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cantidad\": 50\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/coins",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"coins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find coins",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/coins",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"coins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find coin by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/coins/5d44aa88e522710640f7494d",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"coins",
+						"5d44aa88e522710640f7494d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update coin",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cantidad\": 50\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/coins/5d44aa88e522710640f7494d",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"coins",
+						"5d44aa88e522710640f7494d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update coins with user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuarios\": [\"5d44ab2fe522710640f7494e\"]\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/coins/5d44aa88e522710640f7494d",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"coins",
+						"5d44aa88e522710640f7494d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete coin",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/coins/5d44aa88e522710640f7494d",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"coins",
+						"5d44aa88e522710640f7494d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save topic of one level ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"titulo\": \"Verb To Be\",\n\t\"descripcion\": \"You will learn to use the verb to be\"\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/nivelescurso/5d44ab5ee522710640f7494f/temas",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"nivelescurso",
+						"5d44ab5ee522710640f7494f",
+						"temas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find topics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/temas",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"temas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find topic by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/temas/5d486dbecdf2e102e3956145",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"temas",
+						"5d486dbecdf2e102e3956145"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update topic",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"titulo\": \"HelloWorld!\",\n\t\"descripcion\": \"You will learn to use the personal pronouns\"\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/temas/5d486dbecdf2e102e3956145",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"temas",
+						"5d486dbecdf2e102e3956145"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete topic",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/temas/5d486dbecdf2e102e3956145",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"temas",
+						"5d486dbecdf2e102e3956145"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save subtopic of one topic",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"titulo\": \"First, second and third person\",\n\t\"descripcion\": \"In this part you will learn the fisrt, second and third person\"\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/5d464e5dcbaccc251038ddfe/subtemas",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"5d464e5dcbaccc251038ddfe",
+						"subtemas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find subtopic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/subtemas",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"subtemas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find subtopic by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/subtemas/5d486f3dcdf2e102e3956148",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"subtemas",
+						"5d486f3dcdf2e102e3956148"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update subtopic",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"titulo\": \"Conjugation\",\n\t\"descripcion\": \"In this part you will learn the conjugation of verb to be\"\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/subtemas/5d486f3dcdf2e102e3956148",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"subtemas",
+						"5d486f3dcdf2e102e3956148"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete subtopic",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/subtemas/5d486f3dcdf2e102e3956148",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"subtemas",
+						"5d486f3dcdf2e102e3956148"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save activity of one subtopic",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"proposito\": \"To learn the verb to be\",\n\t\"descripcion\": \"Conjugar el verbo to be con los pronombres personales\"\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/subtemas/5d486f3dcdf2e102e3956148/actividades",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"subtemas",
+						"5d486f3dcdf2e102e3956148",
+						"actividades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find activities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/actividades",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"actividades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find activity by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/actividades/5d487fa22cc38a030ce98206",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"actividades",
+						"5d487fa22cc38a030ce98206"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find activity of subtopic (populate)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/subtemas/5d486f3dcdf2e102e3956148/actividades/5d487fa22cc38a030ce98206",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"subtemas",
+						"5d486f3dcdf2e102e3956148",
+						"actividades",
+						"5d487fa22cc38a030ce98206"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update activity",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"proposito\": \"To learn the verb to be\",\n\t\"descripcion\": \"Conjugar el verbo to be con los pronombres personales\"\n}"
+				},
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/actividades/5d487fa22cc38a030ce98206",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"actividades",
+						"5d487fa22cc38a030ce98206"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete activity",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://8725-d97f7786-a13d-4ea2-a72f-61783c265298.ws-us0.gitpod.io/actividades/5d487fa22cc38a030ce98206",
+					"protocol": "https",
+					"host": [
+						"8725-d97f7786-a13d-4ea2-a72f-61783c265298",
+						"ws-us0",
+						"gitpod",
+						"io"
+					],
+					"path": [
+						"actividades",
+						"5d487fa22cc38a030ce98206"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
